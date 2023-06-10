@@ -28,15 +28,15 @@
 				<input
 					type="text"
 					class="todo-input"
-					placeholder="Wpisz treść zadania..." />
+					placeholder="Enter your task..." />
 				<button class="btn-add">Add</button>
 			</div>
 			<div class="todolist">
-				<h3>Lista zadań:</h3>
-				<p class="error-info">Brak zadań na liście.</p>
+				<h3>ToDo List:</h3>
+				<p class="error-info">No tasks on the list.</p>
 				<ul>
 					<li data-id="test1">
-						Wypić kawę
+						Coffee Break
 						<div class="tools">
 							<button class="complete">
 								<i class="fas fa-check"></i>
@@ -48,7 +48,7 @@
 						</div>
 					</li>
 					<li data-id="test2">
-						Zjeść śniadanie
+						Shopping
 						<div class="tools">
 							<button class="complete">
 								<i class="fas fa-check"></i>
@@ -60,7 +60,7 @@
 						</div>
 					</li>
 					<li data-id="test3">
-						Umyć okna
+						Gardening
 						<div class="tools">
 							<button class="complete">
 								<i class="fas fa-check"></i>
@@ -76,15 +76,15 @@
 		</div>
 
 		<div class="popup">
-			<h3>Edytuj zadanie:</h3>
+			<h3>Edit Task:</h3>
 			<div class="popup-body">
 				<p class="popup-info"></p>
 				<input
 					type="text"
 					class="popup-input"
-					placeholder="Wprowadź nową treść zadania..." />
-				<button class="popup-btn accept">Zatwierdź</button>
-				<button class="popup-btn cancel">Anuluj</button>
+					placeholder="Enter new task description" />
+				<button class="popup-btn accept">Confirm</button>
+				<button class="popup-btn cancel">Cancel</button>
 			</div>
 		</div>
 		<script type="module" src="./script.js"></script>
