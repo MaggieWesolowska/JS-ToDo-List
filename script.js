@@ -11,16 +11,23 @@ const main = () => {
 	prepareDOMEvents();
 };
 
-// let itemsArray = localStorage.getItem('items')
-// 	? JSON.parse('items')
-// 	: [];
+const itemsArray = localStorage.getItem('items')
+	? JSON.parse(localStorage.getItem('items'))
+	: [];
 
-// function add() {
-// 	itemsArray.push(input.value);
-// 	localStorage.setItem('items', JSON.stringify(itemsArray));
-// 	addTask(input.value);
-// 	input.value = '';
-// }
+// const item = todoInput.value;
+
+const createItem = item => {
+	itemsArray.push(item.value);
+	localStorage.setItem('items', JSON.stringify(itemsArray));
+};
+
+const displayItems = () => {
+	let items = '';
+	for (let i = 0; i < itemsArray.length; i++) {
+		console.log(items);
+	}
+};
 
 const prepareDOMElements = () => {
 	// getting todo list elements:
@@ -56,10 +63,7 @@ const addNewTask = () => {
 	} else {
 		const newTask = document.createElement('li');
 		newTask.textContent = todoInput.value; // input.value(todoInput) = newTask.textContent
-		localStorage.setItem(
-			'items',
-			JSON.stringify(newTask.textContent)
-		);
+
 		createToolItems(newTask); // calling createToolItems() function to add tools to the newTask:'newTask' parameter replaces 'newItem' parameter while calling createToolItems() here, because newTask is only local to this function and appends its tools here:
 		//appending <li> with newTask to the list.
 		ulList.appendChild(newTask);
