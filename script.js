@@ -11,6 +11,17 @@ const main = () => {
 	prepareDOMEvents();
 };
 
+// let itemsArray = localStorage.getItem('items')
+// 	? JSON.parse('items')
+// 	: [];
+
+// function add() {
+// 	itemsArray.push(input.value);
+// 	localStorage.setItem('items', JSON.stringify(itemsArray));
+// 	addTask(input.value);
+// 	input.value = '';
+// }
+
 const prepareDOMElements = () => {
 	// getting todo list elements:
 	todoInput = document.querySelector('.todo-input');
@@ -38,17 +49,21 @@ const prepareDOMEvents = () => {
 };
 
 // 1) Create function to add new tasks:
-// input.value(todoInput) = newItem.textContent
+
 const addNewTask = () => {
 	if (todoInput.value === '') {
 		errorInfo.textContent = 'Enter Task!';
 	} else {
 		const newTask = document.createElement('li');
-		newTask.textContent = todoInput.value;
-		// calling createToolItems() function to add tools to the newTask:'newTask' parameter replaces 'newItem' parameter while calling createToolItems() here, because newTask is only local to this function and appends its tools here:
-		createToolItems(newTask);
-		//appending <li> with newTask to the list:
+		newTask.textContent = todoInput.value; // input.value(todoInput) = newTask.textContent
+		localStorage.setItem(
+			'items',
+			JSON.stringify(newTask.textContent)
+		);
+		createToolItems(newTask); // calling createToolItems() function to add tools to the newTask:'newTask' parameter replaces 'newItem' parameter while calling createToolItems() here, because newTask is only local to this function and appends its tools here:
+		//appending <li> with newTask to the list.
 		ulList.appendChild(newTask);
+
 		// cleaning the input and error msg after entering:
 		todoInput.value = '';
 		errorInfo.textContent = '';
