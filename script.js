@@ -10,23 +10,55 @@ const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
 };
+const displayDate = () => {
+	let date = new Date();
+	date = date.toString().split(' ');
+	document.querySelector('#date').innerHTML =
+		date[1] + ' ' + date[2] + ' ' + date[3];
+};
 
 const itemsArray = localStorage.getItem('items')
 	? JSON.parse(localStorage.getItem('items'))
 	: [];
 
-// const item = todoInput.value;
+const item = document.querySelector('.item');
 
 const createItem = item => {
-	itemsArray.push(item.value);
+	itemsArray.push(item);
 	localStorage.setItem('items', JSON.stringify(itemsArray));
+	// location.reload();
+};
+
+const deleteItem = i => {
+	itemsArray.splice(i, 1);
+	localStorage.setItem('items', JSON.stringify(itemsArray));
+	location.reload();
+};
+
+const updateItem = (text, i) => {
+	itemsArray[i] = text;
+	localStorage.setItem('items', JSON.stringify(itemsArray));
+	location.reload();
 };
 
 const displayItems = () => {
 	let items = '';
 	for (let i = 0; i < itemsArray.length; i++) {
-		console.log(items);
+		items +
+			` <li class="item>
+		${itemsArray[i]}
+		<div class="tools">
+			<button class="complete">
+				<i class="fas fa-check"></i>
+			</button>
+			<button class="edit">EDIT</button>
+			<button class="delete">
+				<i class="fas fa-times"></i>
+			</button>
+		</div>
+	</li>`;
 	}
+	ulList.innerHTML = items;
 };
 
 const prepareDOMElements = () => {
@@ -62,12 +94,11 @@ const addNewTask = () => {
 		errorInfo.textContent = 'Enter Task!';
 	} else {
 		const newTask = document.createElement('li');
+		newTask.classList.add('item');
 		newTask.textContent = todoInput.value; // input.value(todoInput) = newTask.textContent
-
 		createToolItems(newTask); // calling createToolItems() function to add tools to the newTask:'newTask' parameter replaces 'newItem' parameter while calling createToolItems() here, because newTask is only local to this function and appends its tools here:
 		//appending <li> with newTask to the list.
 		ulList.appendChild(newTask);
-
 		// cleaning the input and error msg after entering:
 		todoInput.value = '';
 		errorInfo.textContent = '';
@@ -152,3 +183,8 @@ const enterKeyCheck = e => {
 };
 
 document.addEventListener('DOMContentLoaded', main);
+
+window.onload = function () {
+	displayDate();
+	displayItems();
+};
