@@ -40,26 +40,26 @@ const updateItem = (text, i) => {
 	localStorage.setItem('items', JSON.stringify(itemsArray));
 	location.reload();
 };
-
-const displayItems = () => {
-	let items = '';
-	for (let i = 0; i < itemsArray.length; i++) {
-		items +
-			` <li class="item>
-		${itemsArray[i]}
-		<div class="tools">
-			<button class="complete">
-				<i class="fas fa-check"></i>
-			</button>
-			<button class="edit">EDIT</button>
-			<button class="delete">
-				<i class="fas fa-times"></i>
-			</button>
-		</div>
-	</li>`;
-	}
-	ulList.innerHTML = items;
-};
+// ---DO NOT USE-- (Tasks are added by function addNewTask()):
+// const displayItems = () => {
+// 	let items = '';
+// 	for (let i = 0; i < itemsArray.length; i++) {
+// 		items +
+// 			` <li class="item>
+// 		${itemsArray[i]}
+// 		<div class="tools">
+// 			<button class="complete">
+// 				<i class="fas fa-check"></i>
+// 			</button>
+// 			<button class="edit">EDIT</button>
+// 			<button class="delete">
+// 				<i class="fas fa-times"></i>
+// 			</button>
+// 		</div>
+// 	</li>`;
+// 	}
+// 	ulList.innerHTML = items;
+// };
 
 const prepareDOMElements = () => {
 	// getting todo list elements:
