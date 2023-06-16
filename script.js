@@ -10,12 +10,6 @@ const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
 };
-const displayDate = () => {
-	let date = new Date();
-	date = date.toString().split(' ');
-	document.querySelector('#date').innerHTML =
-		date[1] + ' ' + date[2] + ' ' + date[3];
-};
 
 const itemsArray = localStorage.getItem('items')
 	? JSON.parse(localStorage.getItem('items'))
@@ -183,8 +177,3 @@ const enterKeyCheck = e => {
 };
 
 document.addEventListener('DOMContentLoaded', main);
-
-window.onload = function () {
-	displayDate();
-	displayItems();
-};
