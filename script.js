@@ -11,48 +11,28 @@ const main = () => {
 	prepareDOMEvents();
 };
 
-const itemsArray = localStorage.getItem('items')
-	? JSON.parse(localStorage.getItem('items'))
-	: [];
+// const itemsArray = localStorage.getItem('items')
+// 	? JSON.parse(localStorage.getItem('items'))
+// 	: [];
 
-const item = document.querySelector('.item');
+// const item = document.querySelector('.item');
 
-const createItem = item => {
-	itemsArray.push(item);
-	localStorage.setItem('items', JSON.stringify(itemsArray));
-	// location.reload();
-};
+// const createItem = item => {
+// 	itemsArray.push(item);
+// 	localStorage.setItem('items', JSON.stringify(itemsArray));
+// 	// location.reload();
+// };
 
-const deleteItem = i => {
-	itemsArray.splice(i, 1);
-	localStorage.setItem('items', JSON.stringify(itemsArray));
-	location.reload();
-};
+// const deleteItem = i => {
+// 	itemsArray.splice(i, 1);
+// 	localStorage.setItem('items', JSON.stringify(itemsArray));
+// 	location.reload();
+// };
 
-const updateItem = (text, i) => {
-	itemsArray[i] = text;
-	localStorage.setItem('items', JSON.stringify(itemsArray));
-	location.reload();
-};
-// ---DO NOT USE-- (Tasks are added by function addNewTask()):
-// const displayItems = () => {
-// 	let items = '';
-// 	for (let i = 0; i < itemsArray.length; i++) {
-// 		items +
-// 			` <li class="item>
-// 		${itemsArray[i]}
-// 		<div class="tools">
-// 			<button class="complete">
-// 				<i class="fas fa-check"></i>
-// 			</button>
-// 			<button class="edit">EDIT</button>
-// 			<button class="delete">
-// 				<i class="fas fa-times"></i>
-// 			</button>
-// 		</div>
-// 	</li>`;
-// 	}
-// 	ulList.innerHTML = items;
+// const updateItem = (text, i) => {
+// 	itemsArray[i] = text;
+// 	localStorage.setItem('items', JSON.stringify(itemsArray));
+// 	location.reload();
 // };
 
 const prepareDOMElements = () => {
@@ -88,7 +68,7 @@ const addNewTask = () => {
 		errorInfo.textContent = 'Enter Task!';
 	} else {
 		const newTask = document.createElement('li');
-		newTask.classList.add('item');
+		// newTask.classList.add('item');
 		newTask.textContent = todoInput.value; // input.value(todoInput) = newTask.textContent
 		createToolItems(newTask); // calling createToolItems() function to add tools to the newTask:'newTask' parameter replaces 'newItem' parameter while calling createToolItems() here, because newTask is only local to this function and appends its tools here:
 		//appending <li> with newTask to the list.
